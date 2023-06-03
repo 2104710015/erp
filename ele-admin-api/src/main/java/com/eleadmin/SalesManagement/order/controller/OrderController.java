@@ -1,6 +1,5 @@
 package com.eleadmin.SalesManagement.order.controller;
 
-import com.eleadmin.SalesManagement.concrete.entity.Concrete;
 import com.eleadmin.common.core.web.BaseController;
 import com.eleadmin.SalesManagement.order.service.OrderService;
 import com.eleadmin.SalesManagement.order.entity.Order;

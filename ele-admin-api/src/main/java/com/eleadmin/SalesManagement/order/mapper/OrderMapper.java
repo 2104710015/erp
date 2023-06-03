@@ -2,7 +2,6 @@ package com.eleadmin.SalesManagement.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.eleadmin.SalesManagement.concrete.entity.Concrete;
 import com.eleadmin.SalesManagement.order.entity.Order;
 import com.eleadmin.SalesManagement.order.param.OrderParam;
 import org.apache.ibatis.annotations.Param;

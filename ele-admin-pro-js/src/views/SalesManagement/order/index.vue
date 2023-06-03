@@ -19,7 +19,7 @@
     <vxe-column field="salesman" title="业务员"></vxe-column>
     <vxe-column title="操作" width="180">
       <template #default="{ row }">
-        <vxe-button status="warning" content="编辑" @click="updateEvent(row)"></vxe-button>
+        <vxe-button v-if="row.status!=='执行中'" status="warning" content="编辑" @click="updateEvent(row)"></vxe-button>
         <vxe-button v-if="row.status==='制单'" status="danger" icon="vxe-icon-delete" @click="deleteEvent(row)"></vxe-button>
       </template>
     </vxe-column>
@@ -133,7 +133,7 @@
         </vxe-form-item>
         <vxe-form-item field="salescontractid" title="销售合同" :span="12" :item-render="{}">
           <template #default="{ data }">
-            <vxe-select v-model="data.salescontractid" :options="demo.optionsNew" placeholder="销售合同">
+            <vxe-select v-model="data.number" :options="demo.optionsNew" placeholder="销售合同">
             </vxe-select>
           </template>
         </vxe-form-item>
