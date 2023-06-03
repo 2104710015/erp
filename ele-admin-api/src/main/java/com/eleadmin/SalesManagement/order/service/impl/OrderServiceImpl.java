@@ -1,7 +1,6 @@
 package com.eleadmin.SalesManagement.order.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.eleadmin.SalesManagement.concrete.entity.Concrete;
 import com.eleadmin.SalesManagement.order.mapper.OrderMapper;
 import com.eleadmin.SalesManagement.order.service.OrderService;
 import com.eleadmin.SalesManagement.order.entity.Order;
