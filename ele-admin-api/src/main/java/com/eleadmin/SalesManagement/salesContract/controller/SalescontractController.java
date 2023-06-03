@@ -47,13 +47,21 @@ public class SalescontractController extends BaseController {
     @ApiOperation("查询全部")
     @GetMapping("/findAllSalescontracts")
     public List<SalescontractParam> list(SalescontractParam param) {
-
+        System.out.println(salescontractService.findAllSalescontracts());
         return salescontractService.findAllSalescontracts();
         // 使用关联查询
         //return success(salescontractService.listRel(param));
     }
-
-    @PreAuthorize("hasAuthority('salesContract:salescontract:list')")
+//    @PreAuthorize("hasAuthority('sys:dict:list')")
+//    @OperationLog
+//    @ApiOperation("查询全部")
+//    @GetMapping("/findSalescontractsToOrder")
+//    public List<Salescontract> list1(SalescontractParam param) {
+//        return salescontractService.findSalescontractToOrder();
+//        // 使用关联查询
+//        //return success(salescontractService.listRel(param));
+//    }
+    @PreAuthorize("hasAuthority('sys:dict:list')")
     @OperationLog
     @ApiOperation("根据id查询")
     @GetMapping("/{id}")

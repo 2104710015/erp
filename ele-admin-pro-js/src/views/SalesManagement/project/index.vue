@@ -85,21 +85,11 @@
             />
           </template>
         </vxe-form-item>
-        <!--        //-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
         <vxe-form-item field="customername" title="客户名称" :span="12" :item-render="{}">
           <template #default="{ data }">
-            <vxe-input v-model="data.customername" placeholder="请输入备注"></vxe-input>
+            <vxe-select v-model="data.customername" :options="pro.options" placeholder="选择客户名称"></vxe-select>
           </template>
         </vxe-form-item>
-        <!--        下拉框-->
-        <!--        <vxe-form-item type="select" label="客户名称" title="客户名称2" prop="projectName">-->
-        <!--          <vxe-select v-model="pro.projectName">-->
-        <!--            <vxe-option v-for="item in pro.projects" :key="item.projectname" :value="item.projectname" :label="item.projectname">-->
-        <!--              {{ item.projectname }}-->
-        <!--            </vxe-option>-->
-        <!--          </vxe-select>-->
-        <!--        </vxe-form-item>-->
-
         <vxe-form-item field="state" title="状态" :span="12" :item-render="{}">
           <template #default="{ data }">
             <vxe-input v-model="data.state" placeholder="请输入备注"></vxe-input>
@@ -199,21 +189,11 @@
             />
           </template>
         </vxe-form-item>
-        <!--        //-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
         <vxe-form-item field="customername" title="客户名称" :span="12" :item-render="{}">
           <template #default="{ data }">
-            <vxe-input v-model="data.customername" placeholder="请输入备注"></vxe-input>
+            <vxe-select v-model="data.customername" :options="pro.options" placeholder="选择客户名称"></vxe-select>
           </template>
         </vxe-form-item>
-        <!--        下拉框-->
-        <!--        <vxe-form-item type="select" label="客户名称" title="客户名称2" prop="projectName">-->
-        <!--          <vxe-select v-model="pro.projectName">-->
-        <!--            <vxe-option v-for="item in pro.projects" :key="item.projectname" :value="item.projectname" :label="item.projectname">-->
-        <!--              {{ item.projectname }}-->
-        <!--            </vxe-option>-->
-        <!--          </vxe-select>-->
-        <!--        </vxe-form-item>-->
-
         <vxe-form-item field="state" title="状态" :span="12" :item-render="{}">
           <template #default="{ data }">
             <vxe-input v-model="data.state" placeholder="请输入备注"></vxe-input>
@@ -242,10 +222,12 @@ export default {
   setup() {
     onMounted(() => {
       findProjects()
+      findCustomerName()
     })
     const pro = reactive({
       projectName: '',
       projects: [],
+      options:[],
       status: false,
       addStatus: false,
       updateData: [],
@@ -261,7 +243,17 @@ export default {
       projects2: [{id: 1, projectname: 'aaa'}, {id: 2, projectname: 'bbb'}, {id: 2, projectname: 'ccc'}]
     })
 
-
+  //下拉框
+    const findCustomerName = async () => {
+      const res = await request.get('/customer/customer/findAllCustomers');
+      const data=res.data
+      if (data && data.length > 0) {
+        pro.options = data.map(item => {
+          return { value: item.unitname, label: item.unitname };
+        });
+      }
+      return res
+    }
     const findProjects = async () => {
       console.log(111)
       const res = await request.get('/project/findAllProject');
@@ -353,7 +345,7 @@ export default {
       findProjectsBycustomerName,
       findProjectsByprojectName,
       proData,
-
+      findCustomerName
     }
 
   },

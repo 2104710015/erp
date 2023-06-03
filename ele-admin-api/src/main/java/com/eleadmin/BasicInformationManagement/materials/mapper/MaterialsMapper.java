@@ -34,7 +34,7 @@ public interface MaterialsMapper extends BaseMapper<Materials> {
      */
     List<Materials> selectListRel(@Param("param") MaterialsParam param);
 
-    List<Materials> findmaterialsByCaregory(int caregoryid);
+    List<Materials> findmaterialsByCaregory(String caregory);
 
     List<Materials> findmaterials();
 

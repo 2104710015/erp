@@ -72,7 +72,7 @@
       height="595"
       :data="demo.materials">
       <vxe-column field="rawname" title="名称"></vxe-column>
-      <!--      <vxe-column field="caregoryid" title="类别名称"></vxe-column>-->
+      <vxe-column field="caregory" title="类别名称"></vxe-column>
       <vxe-column field="model" title="规格型号"></vxe-column>
       <vxe-column field="unitofmeasurement" title="计量单位"></vxe-column>
       <vxe-column field="status" title="状态"></vxe-column>
@@ -97,7 +97,7 @@
         </vxe-form-item>
         <vxe-form-item field="caregory" title="类别" :span="12" :item-render="{}">
           <template #default="{ data }">
-            <vxe-select v-model="data.caregoryid" :options="demo.options" placeholder="请输入类别"></vxe-select>
+            <vxe-select v-model="data.caregory" :options="demo.options" placeholder="请输入类别"></vxe-select>
           </template>
         </vxe-form-item>
         <vxe-form-item field="model" title="规格型号" :span="12" :item-render="{}">
@@ -130,7 +130,7 @@
         </vxe-form-item>
         <vxe-form-item field="caregory" title="类别" :span="12" :item-render="{}">
           <template #default="{ data }">
-            <vxe-select v-model="data.caregoryid" :options="demo.options" placeholder="请输入类别"></vxe-select>
+            <vxe-select v-model="data.caregory" :options="demo.options" placeholder="请输入类别"></vxe-select>
           </template>
         </vxe-form-item>
         <vxe-form-item field="model" title="规格型号" :span="12" :item-render="{}">
@@ -204,7 +204,7 @@ export default {
       const data=res.data
       if (data && data.length > 0) {
         demo.options = data.map(item => {
-          return { value: item.id, label: item.caregory };
+          return { value: item.caregory, label: item.caregory };
         });
       }
       return res
@@ -213,7 +213,7 @@ export default {
       demo.addStatusNew=true
     }
     const addEventNew = async() => {
-      demo.addstatusNew = false;
+      demo.addStatusNew = false;
       let data={
         rawname:demo.addDataNew.rawname,
         model:demo.addDataNew.model,
@@ -287,7 +287,7 @@ export default {
       demo.addStatus=true
     }
     const addEvent = async() => {
-      demo.addstatus = false;
+      demo.addStatus = false;
       let data={
         caregory:demo.addData.caregory,
         pid:demo.addData.pid

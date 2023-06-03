@@ -13,7 +13,7 @@
             <if test="param.rawname != null">
                 AND a.rawname LIKE CONCAT('%', #{param.rawname}, '%')
             </if>
-            <if test="param.caregoryid != null">
+            <if test="param.caregory != null">
                 AND a.caretoryid LIKE CONCAT('%', #{param.caretoryid}, '%')
             </if>
             <if test="param.model != null">
@@ -42,10 +42,10 @@
     </select>
     <select id="findmaterialsByCaregory" resultType="com.eleadmin.BasicInformationManagement.materials.entity.Materials">
         select *
-        from materials where caregoryid=#{caregoryid};
+        from materials where caregory=#{caregory};
     </select>
     <update id="updateMaterials" parameterType="com.eleadmin.BasicInformationManagement.materials.entity.Materials">
-        update materials set rawname=#{rawname},caregoryid=#{caregoryid},model=#{model},
+        update materials set rawname=#{rawname},caregory=#{caregory},model=#{model},
                              unitOfMeasurement=#{unitofmeasurement},status=#{status} where id=#{id}
     </update>
     <delete id="deleltematerials" >
@@ -55,7 +55,7 @@
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
             select LAST_INSERT_ID()
         </selectKey>
-        insert into materials (rawname,caregoryid,model,unitOfMeasurement,status,tenant_id)
-               values (#{rawname},#{caregoryid},#{model},#{unitofmeasurement},#{status},2)
+        insert into materials (rawname,caregory,model,unitOfMeasurement,status,tenant_id)
+               values (#{rawname},#{caregory},#{model},#{unitofmeasurement},#{status},2)
     </insert>
 </mapper>

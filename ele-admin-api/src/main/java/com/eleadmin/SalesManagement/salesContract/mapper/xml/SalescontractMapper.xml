@@ -53,14 +53,12 @@
 
 
     <select id="findAllSalescontracts" resultType="com.eleadmin.SalesManagement.salesContract.param.SalescontractParam">
-        SELECT sc.*, c.unitName, p.projectName,
+        SELECT sc.*, p.customerName, p.projectName,
                p.projectAddress, p.transportationDistance
         FROM salescontract sc
-                 INNER JOIN customer c ON sc.customerId = c.id and sc.tenant_id=2 and c.tenant_id=2
                  INNER JOIN project p ON sc.projectId = p.projectId and sc.tenant_id=2 and p.tenant_id=2
-        where sc.tenant_id=2 and c.tenant_id=2 and p.tenant_id=2
+        where sc.tenant_id=2 and p.tenant_id=2
     </select>
-
     <update id="updateSalescontract" parameterType="com.eleadmin.SalesManagement.salesContract.param.SalescontractParam">
         update salescontract set number=#{number}, contraType=#{contratype},contractAmount=#{contractAmount},
                                  signingTime=#{signingtime}, supplyPeriodStart=#{supplyperiodstart},

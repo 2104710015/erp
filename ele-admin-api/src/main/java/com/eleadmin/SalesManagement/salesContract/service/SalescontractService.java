@@ -42,6 +42,7 @@ public interface SalescontractService extends IService<Salescontract> {
 
     List<SalescontractParam> findAllSalescontracts();
 
+
     boolean addSalescontract(Salescontract salescontract);
 
     boolean updateSalescontract(Salescontract salescontract);

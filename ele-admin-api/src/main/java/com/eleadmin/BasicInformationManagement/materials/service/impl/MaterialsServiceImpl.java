@@ -54,8 +54,8 @@ public class MaterialsServiceImpl extends ServiceImpl<MaterialsMapper, Materials
     }
 
     @Override
-    public List<Materials> findmaterialsByCaregory(int caregoryid) {
-        return mapper.findmaterialsByCaregory(caregoryid);
+    public List<Materials> findmaterialsByCaregory(String caregory) {
+        return mapper.findmaterialsByCaregory(caregory);
     }
 
     @Override

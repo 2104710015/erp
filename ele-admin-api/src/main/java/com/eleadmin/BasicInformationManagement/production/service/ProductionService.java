@@ -41,6 +41,10 @@ public interface ProductionService extends IService<Production> {
     Production getByIdRel(Integer propertyid);
 
     List<Production> findAllProductions();
+
+    List<Production> findProductionsToOrder();
+
+    Production findProductionsByid(int id);
     void deleteProduction(int id);
     boolean updateProduction(Production production);
     boolean addProduction(Production production);

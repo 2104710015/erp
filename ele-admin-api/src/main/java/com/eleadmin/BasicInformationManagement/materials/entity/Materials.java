@@ -26,7 +26,7 @@ public class Materials implements Serializable {
 
     private String rawname;
 
-    private int caregoryid;
+    private String caregory;
 
     private String model;
 

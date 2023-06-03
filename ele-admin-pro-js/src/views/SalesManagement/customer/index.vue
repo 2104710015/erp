@@ -247,6 +247,7 @@ export default {
       if (res.data.code === 0) {
         return res.data.message;
       }
+      reload()
       return Promise.reject(new Error(res.data.message));
     }
 

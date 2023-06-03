@@ -37,6 +37,9 @@ public interface SalescontractMapper extends BaseMapper<Salescontract> {
 
     List<SalescontractParam> findAllSalescontracts();
 
+
+    List<Salescontract> findSalescontractToOrder();
+
     void addSalescontract(Salescontract salescontract);
 
     void updateSalescontract(Salescontract salescontract);

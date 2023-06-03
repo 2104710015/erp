@@ -14,7 +14,7 @@
       <vxe-column field="contractamount" title="合同金额"></vxe-column>
       <vxe-column field="contratype" title="合同类别"></vxe-column>
       <vxe-column field="signingtime" title="签订时间"></vxe-column>
-      <vxe-column field="unitname" title="客户名称"></vxe-column>
+      <vxe-column field="customername" title="客户名称"></vxe-column>
       <vxe-column field="projectname" title="工程名称"></vxe-column>
       <vxe-column field="projectaddress" title="交货地址"></vxe-column>
       <vxe-column field="transportationdistance" title="运距"></vxe-column>
@@ -84,11 +84,6 @@
         <vxe-form-item field="projectname" title="工程名称" :span="12" :item-render="{}">
           <template #default="{ data }">
             <vxe-input v-model="data.projectname" placeholder="工程名称" suffix-icon="vxe-icon-caret-down" @click="findProject()"></vxe-input>
-            <el-dialog title="搜索结果" :visible.sync="dialogVisible" :modal-append-to-body="false">
-              <ul>
-                <li v-for="(project, index) in projectList" :key="index">{{ project.name }}</li>
-              </ul>
-            </el-dialog>
           </template>
         </vxe-form-item>
 
@@ -190,10 +185,7 @@ export default {
     })
     const demo = reactive({
       salesContracts:[],
-      projectname: ''
     })
-    const dialogVisible = reactive(false)
-    const projectList = reactive([])
     const findSalescontracts = async () =>{
       console.log(111)
       const res = await request.get('/salesContract/salescontract/findAllSalescontracts');
@@ -217,23 +209,13 @@ export default {
       }
       return Promise.reject(new Error(res.data.message));
     }
-    const findProject=async () => {
-      projectList.value = [
-        { name: '工程1' },
-        { name: '工程2' },
-        { name: '工程3' }
-      ]
-      // 显示 Dialog 对话框
-      this.dialogVisible = true
-    }
-
     return{
       demo,
-      dialogVisible,
+
       findSalescontracts,
       updateEvent,
       submitEvent,
-      findProject,
+
     }
   }
 }

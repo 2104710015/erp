@@ -41,7 +41,7 @@ public interface MaterialsService extends IService<Materials> {
     Materials getByIdRel(Integer id);
 
     List<Materials> findmaterials();
-    List<Materials> findmaterialsByCaregory(int caregoryid);
+    List<Materials> findmaterialsByCaregory(String caregory);
 
     boolean updateMaterials(Materials materials);
 

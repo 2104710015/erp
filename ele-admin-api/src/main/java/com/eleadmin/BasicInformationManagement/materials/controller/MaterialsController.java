@@ -53,9 +53,9 @@ public class MaterialsController extends BaseController {
     @PreAuthorize("hasAuthority('sys:dict:list')")
     @OperationLog
     @ApiOperation("根据id查询")
-    @GetMapping("/findmaterialsByCaregory/{caregoryid}")
-    public List<Materials> get(@PathVariable("caregoryid") int caregoryid) {
-        return materialsService.findmaterialsByCaregory(caregoryid);
+    @GetMapping("/findmaterialsByCaregory/{caregory}")
+    public List<Materials> get(@PathVariable("caregory") String caregory) {
+        return materialsService.findmaterialsByCaregory(caregory);
     }
 
     @PreAuthorize("hasAuthority('sys:dict:list')")

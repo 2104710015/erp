@@ -59,9 +59,13 @@ public class SalescontractParam extends BaseParam {
 
 
 
-    @ApiModelProperty(value = "单位名称")
-    @TableField("unitName")
-    private String unitname;
+//    @ApiModelProperty(value = "单位名称")
+//    @TableField("unitName")
+//    private String unitname;
+
+    @ApiModelProperty(value = "客户名称")
+    @TableField("customerName")
+    private String customername;
 
     @ApiModelProperty(value = "工程名称")
     @TableField("projectName")

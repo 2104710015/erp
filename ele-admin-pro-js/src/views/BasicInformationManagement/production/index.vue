@@ -2,10 +2,11 @@
   <div>
     <vxe-button status="primary" content="新增" @click="addProduction()"></vxe-button>
     <vxe-table
+      height="595"
       show-overflow
       :row-config="{isHover: true, useKey: true}"
       :column-config="{resizable: true}"
-      :tree-config="{transform: true, rowField: 'id', parentField: 'parentid', line: true}"
+      :tree-config="{transform: true, rowField: 'id', parentField: 'parentid', line: true,expandAll: true}"
       :data="demo.productions"
       :scroll-y="{enabled: false}">
       <vxe-column field="propertyname" title="产品名称" tree-node></vxe-column>
